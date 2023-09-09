@@ -11,9 +11,17 @@ public class DialogueGraphView : GraphView
 
     public DialogueGraphView()
     {
+
+        styleSheets.Add(Resources.Load<StyleSheet>("DialogueGraph"));
+        SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);    
+
         this.AddManipulator(new ContentDragger());//콘텐츠 드레거
         this.AddManipulator(new SelectionDragger());//선택 드래거
         this.AddManipulator(new RectangleSelector());//사각형 상자
+
+        var grid = new GridBackground();
+        Insert(0, grid);
+        grid.StretchToParentSize();
 
         AddElement(GenerateEntryPointNode()); // 노드 생성
     }
@@ -72,11 +80,28 @@ public class DialogueGraphView : GraphView
         var inputPort = GeneratePort(dialogueNode, Direction.Input, Port.Capacity.Multi);
         inputPort.portName = "Input";
         dialogueNode.inputContainer.Add(inputPort);
+
+        var button = new Button(() => { AddChoicePort(dialogueNode); });
+        button.text = "New Choice";
+        dialogueNode.titleContainer.Add(button);
+
         dialogueNode.RefreshExpandedState();
         dialogueNode.RefreshPorts();
         dialogueNode.SetPosition(new Rect(Vector2.zero, defaultNodeSize));
 
         return dialogueNode;
 
+    }
+
+    private void AddChoicePort(DialogueNode dialogueNode)
+    {
+        var generatedPort = GeneratePort(dialogueNode, Direction.Output);
+
+        var outputPortCount = dialogueNode.outputContainer.Query("connector").ToList().Count;
+        generatedPort.portName = $"Choice {outputPortCount}";
+
+        dialogueNode.outputContainer.Add(generatedPort);
+        dialogueNode.RefreshPorts();
+        dialogueNode.RefreshExpandedState();
     }
 }
