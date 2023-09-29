@@ -7,4 +7,4 @@ UsefulAndPromptTools
 2. MonoSingleton
 
 # 현재 개발 중인 기능
-1. DialogueSystem
+1. DialogueSystem 2/3 완성
