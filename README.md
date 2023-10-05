@@ -8,3 +8,6 @@ UsefulAndPromptTools
 
 # 현재 개발 중인 기능
 1. DialogueSystem 2/3 완성
+
+# 개발 예정 중인 기능
+1. EnemyAI
