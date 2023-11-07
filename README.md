@@ -1,2 +1,9 @@
-# UsefulAndPromptTools
-## 게임을 만들때 자주 쓰이는 Core기능 등을 편하게 쓰기위해 만들었습니다.
+UsefulAndPromptTools
+=============
+게임을 만들때 자주 쓰이는 Core기능 등을 편하게 쓰기위해 만들었습니다.
+
+# 현재 개발 완성된 기능
+1. ObjectPoolManager
+
+# 현재 개발 중인 기능
+1. DialogueSystem
