@@ -41,11 +41,11 @@ public class DialogueGraph : EditorWindow
         var fileNameTextField = new TextField("File Name:");
         fileNameTextField.SetValueWithoutNotify(_fileName);
         fileNameTextField.MarkDirtyRepaint();
-        fileNameTextField.RegisterValueChangedCallback(evt => _fileName = evt.newValue );
+        fileNameTextField.RegisterValueChangedCallback(evt => _fileName = evt.newValue);
         toolbar.Add(fileNameTextField);
 
-        toolbar.Add(new Button(() => SaveData()) { text = " Save Data"});
-        toolbar.Add(new Button(() => LoadData()) { text = " Load Data" });  
+        toolbar.Add(new Button(() => RequestDataOperation(true)) { text = " Save Data" });
+        toolbar.Add(new Button(() => RequestDataOperation(false)) { text = " Load Data" });
 
         var nodeCreateButton = new Button(() => { _graphView.CreateNode("Dialogue Node"); });
         nodeCreateButton.text = "Create Node";
@@ -54,15 +54,27 @@ public class DialogueGraph : EditorWindow
         rootVisualElement.Add(toolbar);
     }
 
-    private void LoadData()
+    private void RequestDataOperation(bool save)
     {
-        throw new NotImplementedException();
-    }
+        if (string.IsNullOrEmpty(_fileName))
+        {
+            EditorUtility.DisplayDialog("잘못된 파일 이름입니다.", "올바른 파일 이름을 입력하십시오.", "OK");
+            return;
+        }
 
-    private void SaveData()
-    {
-        throw new NotImplementedException();
+        var saveUtility = GraphSaveUtility.GetInstance(_graphView);
+        if (save)
+        {
+            saveUtility.SaveGraph(_fileName);
+        }
+        else
+        {
+            saveUtility.LoadGraph(_fileName);
+        }
     }
+    
+
+
 
     private void OnDisable()
     {
