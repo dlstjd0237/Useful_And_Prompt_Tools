@@ -48,10 +48,10 @@ public class GraphSaveUtility : MonoBehaviour
             });
         }
 
-        if (!AssetDatabase.IsValidFolder("Assets/Resources")) //Resources 폴더가 없음 만드셈
-            AssetDatabase.CreateFolder("Assets", "Resources");
+        if (AssetDatabase.IsValidFolder("Assets/UAPT")) //Resources 폴더가 없음 만드셈
+            AssetDatabase.CreateFolder("Assets/UAPT", "Resources");
 
-        AssetDatabase.CreateAsset(dialogueContainer, $"Assets/Resources/{fileName}.asset");
+        AssetDatabase.CreateAsset(dialogueContainer, $"Assets/UAPT/Resources/{fileName}.asset");
         AssetDatabase.SaveAssets();
 
     }
@@ -59,7 +59,7 @@ public class GraphSaveUtility : MonoBehaviour
     {
         _containerCache = Resources.Load<DialogueContainer>(fileName);
 
-        if(_containerCache == null)
+        if (_containerCache == null)
         {
             EditorUtility.DisplayDialog("파일이 없습니다.", "해당 파일 이름의 데이터가 저장되어 있지 않습니다.", "ok");
             return;

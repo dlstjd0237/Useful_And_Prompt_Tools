@@ -11,7 +11,7 @@ public class DialogueGraph : EditorWindow
     private DialogueGraphView _graphView;
     private string _fileName = "New Narrative";
 
-    [MenuItem("Graph/Dialogue Graph")]
+    [MenuItem("UAPT/Dialogue Graph")]
     public static void OpenDialogueGraphWindow()
     {
         var window = GetWindow<DialogueGraph>();
@@ -61,6 +61,8 @@ public class DialogueGraph : EditorWindow
             EditorUtility.DisplayDialog("잘못된 파일 이름입니다.", "올바른 파일 이름을 입력하십시오.", "OK");
             return;
         }
+
+
 
         var saveUtility = GraphSaveUtility.GetInstance(_graphView);
         if (save)
