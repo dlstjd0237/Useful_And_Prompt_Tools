@@ -4,12 +4,12 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static bool shuttingDown = false;
     private static object locker = new object();
-    private static T instance = null; // T는 제네릭 탑입이기에 뭐든 넣을수 있음
+    private static T instance = null;
     public static T Instance
     {
         get
         {
-            if (shuttingDown)
+            if (shuttingDown) //플레이어가 게임을 껏을때 또는 메니저 스크립트를 삭제 했을때 return null
             {
                 return null;
             }
@@ -34,7 +34,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationQuit()//모바일 에서 앱이 꺼졌을때
     {
         shuttingDown = true;
     }

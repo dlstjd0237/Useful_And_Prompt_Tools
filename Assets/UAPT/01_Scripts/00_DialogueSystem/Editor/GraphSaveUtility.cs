@@ -47,8 +47,7 @@ public class GraphSaveUtility : MonoBehaviour
                 Position = dialogueNode.GetPosition().position
             });
         }
-
-        if (AssetDatabase.IsValidFolder("Assets/UAPT")) //Resources 폴더가 없음 만드셈
+        if (!AssetDatabase.IsValidFolder("Assets/UAPT")) //Resources 폴더가 없음 만드셈
             AssetDatabase.CreateFolder("Assets/UAPT", "Resources");
 
         AssetDatabase.CreateAsset(dialogueContainer, $"Assets/UAPT/Resources/{fileName}.asset");
