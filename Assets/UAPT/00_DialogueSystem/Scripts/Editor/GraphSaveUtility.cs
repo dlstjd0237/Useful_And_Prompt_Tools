@@ -71,16 +71,30 @@ public class GraphSaveUtility : MonoBehaviour
 
     private void ConnectNodes()
     {
-        throw new System.NotImplementedException();
+
     }
 
     private void CreateNodes()
     {
-        throw new System.NotImplementedException();
+        foreach (var nodeData in _containerCache.DialogueNodeData)
+        {
+            var tempNode = _targetGraphView.CreateDialogueNode(nodeData.DialogueText);
+            tempNode.GUID = nodeData.Guid;
+            _targetGraphView.AddElement(tempNode);
+            var nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(tempNode, x.PortName));
+        }
     }
 
     private void ClearGraph()
     {
-        throw new System.NotImplementedException();
+        Nodes.Find(x => x.EntryPoint).GUID = _containerCache.nodeLinks[0].BaseNodeGuid;
+        foreach (var node in Nodes)
+        {
+            if (node.EntryPoint) return;
+            Edges.Where(x => x.input.node == node).ToList().ForEach(edgs => _targetGraphView.RemoveElement(edgs));
+
+            _targetGraphView.RemoveElement(node);
+        }
     }
 }
