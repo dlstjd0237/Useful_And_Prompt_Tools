@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,7 +12,7 @@ public class DialogueGraph : EditorWindow
     private DialogueGraphView _graphView;
     private string _fileName = "New Narrative";
 
-    [MenuItem("UAPT/Dialogue Graph")]
+    [MenuItem("Tool/UAPT/Dialogue Graph")]
     public static void OpenDialogueGraphWindow()
     {
         var window = GetWindow<DialogueGraph>();
@@ -22,7 +23,10 @@ public class DialogueGraph : EditorWindow
     {
         ConstructGraphView();
         GenerateToolbar();
+        GenerateMiniMap();
     }
+
+
     private void ConstructGraphView()
     {
         _graphView = new DialogueGraphView
@@ -54,6 +58,12 @@ public class DialogueGraph : EditorWindow
         rootVisualElement.Add(toolbar);
     }
 
+    private void GenerateMiniMap()
+    {
+        var miniMap = new MiniMap { anchored = true };
+        miniMap.SetPosition(new Rect(10, 30, 200, 140));
+        _graphView.Add(miniMap);
+    }
     private void RequestDataOperation(bool save)
     {
         if (string.IsNullOrEmpty(_fileName))
