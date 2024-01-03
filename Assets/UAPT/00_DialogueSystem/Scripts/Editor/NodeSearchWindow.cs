@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class NodeSearchWindow : MonoBehaviour
+public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
     {
-        
+        return null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool OnSelectEntry(SearchTreeEntry SearchTreeEntry, SearchWindowContext context)
     {
-        
+        return null;
     }
 }
