@@ -12,6 +12,6 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
 
     public bool OnSelectEntry(SearchTreeEntry SearchTreeEntry, SearchWindowContext context)
     {
-        return null;
+        return true;
     }
 }
