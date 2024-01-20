@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,23 +14,18 @@ namespace UAPT.Utile
         #region SetButtonClikeEvent
 
         /// <summary>
-        /// 버튼의 클릭 이벤트를 넣어 주는 메서드입니다.
+        /// 클릭 이벤트를 넣어 주는 메서드입니다.
         /// </summary>
         /// <param name="_btn">이벤트를 넣어줄 버튼</param>
         /// <param name="_action">클릭 이벤트</param>
-        public static void SetButtonClikeEvent(Button _btn, UnityEngine.Events.UnityAction _action)
+        public static void SetClikeEvent(Button _btn, UnityEngine.Events.UnityAction _action)
         {
             if (_btn == null)
                 return;
             _btn.RegisterCallback<ClickEvent>(evt => _action?.Invoke());
         }
 
-        /// <summary>
-        /// 버튼의 클릭 이벤트를 넣어 주는 메서드입니다.
-        /// </summary>
-        /// <param name="_btns">이벤트를 넣어줄 버튼 배열</param>
-        /// <param name="_action">클릭 이벤트</param>
-        public static void SetButtonClikeEvent(Button[] _btns, UnityEngine.Events.UnityAction _action)
+        public static void SetClikeEvent(Button[] _btns, UnityEngine.Events.UnityAction _action)
         {
             if (_btns == null)
                 return;
@@ -41,12 +35,7 @@ namespace UAPT.Utile
             }
         }
 
-        /// <summary>
-        /// 버튼의 클릭 이벤트를 넣어 주는 메서드입니다.
-        /// </summary>
-        /// <param name="_btnList">이벤트를 넣어줄 버튼 리스트</param>
-        /// <param name="_action">클릭 이벤트</param>
-        public static void SetButtonClikeEvent(List<Button> _btnList, UnityEngine.Events.UnityAction _action)
+        public static void SetClikeEvent(List<Button> _btnList, UnityEngine.Events.UnityAction _action)
         {
             if (_btnList == null)
                 return;
@@ -54,6 +43,123 @@ namespace UAPT.Utile
             {
                 _btnList[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
             }
+        }
+
+        public static void SetClikeEvent(VisualElement _vE, UnityEngine.Events.UnityAction _action)
+        {
+            if (_vE == null)
+                return;
+            _vE.RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+        }
+
+        public static void SetClikeEvent(VisualElement[] _vEs, UnityEngine.Events.UnityAction _action)
+        {
+            if (_vEs == null)
+                return;
+            for (int i = 0; i < _vEs.Length; ++i)
+            {
+                _vEs[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+            }
+        }
+
+        public static void SetClikeEvent(List<VisualElement> _vEList, UnityEngine.Events.UnityAction _action)
+        {
+            if (_vEList == null)
+                return;
+            for (int i = 0; i < _vEList.Count; ++i)
+            {
+                _vEList[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+            }
+        }
+
+        public static void SetClikeEvent(Label _label, UnityEngine.Events.UnityAction _action)
+        {
+            if (_label == null)
+                return;
+            _label.RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+        }
+
+        public static void SetClikeEvent(Label[] _labels, UnityEngine.Events.UnityAction _action)
+        {
+            if (_labels == null)
+                return;
+            for (int i = 0; i < _labels.Length; ++i)
+            {
+                _labels[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+            }
+        }
+
+        public static void SetClikeEvent(List<Label> _labelList, UnityEngine.Events.UnityAction _action)
+        {
+            if (_labelList == null)
+                return;
+            for (int i = 0; i < _labelList.Count; ++i)
+            {
+                _labelList[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+            }
+        }
+
+        public static void SetClikeEvent(TextField _textField, UnityEngine.Events.UnityAction _action)
+        {
+            if (_textField == null)
+                return;
+            _textField.RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+        }
+
+        public static void SetClikeEvent(TextField[] _textField, UnityEngine.Events.UnityAction _action)
+        {
+            if (_textField == null)
+                return;
+            for (int i = 0; i < _textField.Length; ++i)
+            {
+                _textField[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+            }
+        }
+
+        public static void SetClikeEvent(List<TextField> _textFieldList, UnityEngine.Events.UnityAction _action)
+        {
+            if (_textFieldList == null)
+                return;
+            for (int i = 0; i < _textFieldList.Count; ++i)
+            {
+                _textFieldList[i].RegisterCallback<ClickEvent>(evt => _action?.Invoke());
+            }
+        }
+        #endregion
+
+        #region SetHoverEvent
+
+        /// <summary>
+        /// Hover 이벤트를 넣어 주는 메서드 입니다.
+        /// </summary>
+        /// <param name="_btn"></param>
+        /// <param name="_action"></param>
+        public static void SetHoverEvent(Button _btn, UnityEngine.Events.UnityAction _action)
+        {
+            if (_btn == null)
+                return;
+            _btn.RegisterCallback<MouseEnterEvent>(evt => _action?.Invoke());
+        }
+
+        public static void SetHoverEvent(VisualElement _vE, UnityEngine.Events.UnityAction _action)
+        {
+            if (_vE == null)
+                return;
+            _vE.RegisterCallback<MouseEnterEvent>(evt => _action?.Invoke());
+        }
+
+        public static void SetHoverEvent(Label _label, UnityEngine.Events.UnityAction _action)
+        {
+            if (_label == null)
+                return;
+            _label.RegisterCallback<MouseEnterEvent>(evt => _action?.Invoke());
+        }
+
+        public static void SetHoverEvent(TextField _textField, UnityEngine.Events.UnityAction _action)
+        {
+            if (_textField == null)
+                return;
+            _textField.RegisterCallback<MouseEnterEvent>(evt => _action?.Invoke());
         }
 
         #endregion
