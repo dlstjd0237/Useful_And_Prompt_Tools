@@ -10,6 +10,7 @@ UsefulAndPromptTools
 4. State Pattern
 5. Joystick
 6. SoundManager
+7. SwipeSystem
 
 # 현재 개발 중인 기능
 1. DialogueSystem 2/3 완성
