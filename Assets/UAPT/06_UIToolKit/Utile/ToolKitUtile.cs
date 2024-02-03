@@ -297,6 +297,15 @@ namespace UAPT.Utile
         }
 
         #endregion
+
+        #region VisualTreeAdd
+
+        public static void VisualTreeAdd(VisualTreeAsset _target, VisualElement _parent)
+        {
+            _parent.Add(_target.Instantiate().Q<VisualElement>());
+        }
+
+        #endregion
     }
 }
 
