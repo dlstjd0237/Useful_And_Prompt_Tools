@@ -8,9 +8,9 @@ using UnityEditor;
 [CustomEditor(typeof(PoolManager))]
 public class PoolManagerEditor : Editor
 {
-    const string INFO = "오브젝트 가져올때\n"+
-        " void Start()\n{\n"+
-        "   PoolManager.SpawnFromPool(태그 이름,위치, 각도);\n}\n"+
+    const string INFO = "오브젝트 가져올때\n" +
+        " void Start()\n{\n" +
+        "   PoolManager.SpawnFromPool(태그 이름,위치, 각도);\n}\n" +
         "\n풀링한 오브젝트에 다음을 적으세요. \n void OnDisable()\n{\n" +
         "   PoolManager.ReturnToPool(gameObject);   //한 객체에 한번만 \n" +
         "   CancelInvoke();     //Monobehaviour에 Invoke가 있다면\n}";
@@ -24,8 +24,11 @@ public class PoolManagerEditor : Editor
 
 
 
-public class PoolManager : MonoSingleton<PoolManager>
+public class PoolManager : MonoBehaviour
 {
+    public static PoolManager Instance;
+    private void Awake() => Instance = this;
+
     [Serializable]
     public class Pool
     {
