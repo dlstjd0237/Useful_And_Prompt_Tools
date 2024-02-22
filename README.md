@@ -11,6 +11,7 @@ UsefulAndPromptTools
 5. Joystick
 6. SoundManager
 7. SwipeSystem
+98. SerializableVariable
 
 # 현재 개발 중인 기능
 1. DialogueSystem 2/3 완성
