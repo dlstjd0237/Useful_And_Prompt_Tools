@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UAPT/10_ImageAlphaEditor/Resources/Style/AlphaEditorStyle.uss?fileID=7433441132597879392&amp;guid=d8c42d4c72d2c63439f7866c4bb8def2&amp;type=3#AlphaEditorStyle" />
+    <ui:Label tabindex="-1" text="Image Alpha Editor" parse-escape-sequences="true" display-tooltip-when-elided="true" name="title-label" class="title-label" />
+    <ui:DropdownField label="Texture Option" index="0" choices="Generate New Texture, Load Texture" name="texture_option-dropdown" />
+    <ui:VisualElement name="custom_tex_value-contain" class="custom_tex_value-contain">
+        <ui:IntegerField label="Width" value="42" name="width-field" class="size-field" />
+        <ui:IntegerField label="Height" value="42" name="height-field" class="size-field" />
+        <ui:Button text="Create Texure" parse-escape-sequences="true" display-tooltip-when-elided="true" name="create_tex-button" class="create_tex-button" />
+    </ui:VisualElement>
+    <uie:ObjectField label="Texture" name="texture-field" type="UnityEngine.Texture2D, UnityEngine.CoreModule" allow-scene-objects="true" focusable="true" class="texture-field" />
+    <ui:DropdownField label="Alpha Option" index="0" choices="Alpha Whole, Gradient Right, Gradient Left, Gradient Bottom, Gradient Top" name="alpha-dropdown" />
+    <ui:SliderInt picking-mode="Ignore" label="Alpha" value="255" high-value="255" name="alpha-slider">
+        <ui:IntegerField value="42" name="alpha_input-field" class="alpha_input-field" />
+    </ui:SliderInt>
+    <uie:GradientField label="Gradient" name="GradientField" />
+    <ui:VisualElement name="preview_area-contain" class="preview_area-contain">
+        <uie:ColorField label="Color" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="tint_color-field" style="align-items: center; height: 18px; justify-content: flex-start; align-self: auto; font-size: 16px; -unity-text-align: middle-left;" />
+        <ui:VisualElement name="preview_pane-contain" style="flex-grow: 1; background-image: resource(&apos;Sprites/Transparency500&apos;); align-items: center; justify-content: center;">
+            <ui:VisualElement name="image_preview-contain" style="flex-grow: 0; width: 300px; height: 300px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="export-button" />
+    </ui:VisualElement>
+</ui:UXML>
