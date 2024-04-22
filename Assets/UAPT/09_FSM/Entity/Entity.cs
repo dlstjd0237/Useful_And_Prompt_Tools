@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StateMachine))]
 public class Entity : MonoBehaviour
 {
     public Animator AnimatorCompo;
+    protected LayerMask _whatIsEnemy;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Transform visualTrm = transform.Find("Visual");
         AnimatorCompo = visualTrm.GetComponent<Animator>();
