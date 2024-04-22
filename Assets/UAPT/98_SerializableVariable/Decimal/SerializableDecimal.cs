@@ -10,15 +10,16 @@ namespace UAPT.SerializableVariable
         private int[] _data;
         public void OnAfterDeserialize()
         {
-            _data = decimal.GetBits(Value);
+              if (_data != null && _data.Length == 4)
+            {
+                Value = new decimal(_data);
+            }
+            
         }
 
         public void OnBeforeSerialize()
         {
-            if (_data != null && _data.Length == 4)
-            {
-                Value = new decimal(_data);
-            }
+           _data = decimal.GetBits(Value);
         }
     }
 }
