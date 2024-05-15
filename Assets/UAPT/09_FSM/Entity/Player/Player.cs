@@ -33,4 +33,15 @@ public class Player : Entity
     {
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
     }
+
+    private void Update()
+    {
+        StateMachine.CurrentState.UpdateState();
+    }
+   
+
+
+
+
+
 }

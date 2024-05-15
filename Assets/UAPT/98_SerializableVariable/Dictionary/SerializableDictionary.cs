@@ -21,7 +21,7 @@ namespace UAPT.SerializableVariable
         }
         public void OnAfterDeserialize()
         {
-            this.Clear();
+            this.Clear(); 
             if (_keys.Count != _values.Count)
             {
                 Debug.LogError($"Key count not equal to value count");
