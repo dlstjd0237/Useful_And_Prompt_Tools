@@ -306,6 +306,11 @@ namespace UAPT.Utile
         }
 
         #endregion
+
+        public static void ElementToggle<T>(T element, string str) where T : VisualElement
+        {
+            element.ToggleInClassList(str);
+        }
     }
 }
 

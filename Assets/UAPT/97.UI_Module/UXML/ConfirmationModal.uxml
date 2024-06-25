@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="confirmation_modal_root_visual_contain-box" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement name="confirmation_modal_background_contain-box" style="flex-grow: 0; width: 80%; height: 25%;">
+            <ui:VisualElement name="confirmation_modal_label_contain-box" style="flex-grow: 0; width: 100%; height: 65%; background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirmation_modal_title-label" style="-unity-font-definition: initial; -unity-font: url(&quot;project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=65d0cafbb2b886f42a1d4b6a9f587d8c&amp;type=3#NotInter-Regular&quot;);" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirmation_modal_description-label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="confirmation_modal_btn_contain-box" style="flex-grow: 1; width: 100%; height: 35%; background-color: rgb(210, 210, 210); border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
