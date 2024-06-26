@@ -1,0 +1,27 @@
+.btn {
+    background-color: rgb(237, 237, 237);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 30%;
+    height: 35%;
+    font-size: 29px;
+}
+
+.root {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.root.on {
+    opacity: 0;
+    margin-bottom: -1600px;
+    margin-top: 1600px;
+}
