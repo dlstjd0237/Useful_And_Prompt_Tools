@@ -19,3 +19,4 @@ UsefulAndPromptTools
 
 # 개발 예정 중인 기능
 1. EnemyAI
+2. 알파값 에디터
