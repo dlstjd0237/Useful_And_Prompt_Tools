@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UAPT/97.UI_Module/Uss/Confirmation_Modal.uss?fileID=7433441132597879392&amp;guid=725f6fd9af0cb704795df6cf8334a74e&amp;type=3#Confirmation_Modal" />
+    <ui:VisualElement name="confirmation_modal_root_visual_contain-box" class="root on" style="transition-duration: 0.3s;">
+        <ui:VisualElement name="confirmation_modal_background_contain-box" style="flex-grow: 0; width: 80%; height: 25%;">
+            <ui:VisualElement name="confirmation_modal_label_contain-box" style="flex-grow: 0; width: 100%; height: 70%; background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <ui:Label tabindex="-1" text="타이틀 레이블" parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirmation_modal_title-label" style="-unity-font-definition: initial; -unity-font: url(&quot;project://database/Assets/UAPT/97.UI_Module/Jalnan2TTF.ttf?fileID=12800000&amp;guid=36d6e9e719a514145beb3cb183ff46e5&amp;type=3#Jalnan2TTF&quot;); width: 100%; height: 35%; font-size: 60px; padding-right: 60px; padding-left: 60px; -unity-text-align: lower-left;" />
+                <ui:Label tabindex="-1" text="추가 설명 레이블" parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirmation_modal_description-label" enable-rich-text="true" style="height: 65%; width: 100%; padding-right: 60px; padding-left: 60px; -unity-font-definition: initial; -unity-font: url(&quot;project://database/Assets/UAPT/97.UI_Module/Jalnan2TTF.ttf?fileID=12800000&amp;guid=36d6e9e719a514145beb3cb183ff46e5&amp;type=3#Jalnan2TTF&quot;); -unity-font-style: normal; font-size: 40px; -unity-text-align: middle-left; white-space: normal; padding-bottom: 40px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="confirmation_modal_btn_contain-box" style="width: 100%; height: 30%; background-color: rgb(210, 210, 210); border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; flex-grow: 1; flex-direction: row; align-items: center; justify-content: space-around;">
+                <ui:Button text="취소" parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirmation_modal_cancel-btn" class="btn" />
+                <ui:Button text="확인" parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirmation_modal_check-btn" class="btn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

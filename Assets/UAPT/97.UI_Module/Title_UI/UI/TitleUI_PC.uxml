@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UAPT/97.UI_Module/Title_UI/PC/UI/TitleUI_PC.uss?fileID=7433441132597879392&amp;guid=657c18667c0b6e24094af073ee69fc0d&amp;type=3#TitleUI_PC" />
+    <ui:VisualElement name="title_contain-box" class="title_contain-box">
+        <ui:VisualElement name="title_icon_contain-box" class="title_icon_contain-box">
+            <ui:VisualElement name="title_icon-box" class="title_icon-box" style="background-image: url(&quot;project://database/Assets/UAPT/04_Joystick/02_Sprites/LargeHandleFilledGrey.png?fileID=21300000&amp;guid=0fd55ce6b997c6c4ab97c9f1992939d2&amp;type=3#LargeHandleFilledGrey&quot;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="title_text-label" class="title_text-label">
+            <ui:Label tabindex="-1" text="Touch To Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="touch-label" class="touch-label" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

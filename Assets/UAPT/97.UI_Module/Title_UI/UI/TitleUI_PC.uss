@@ -1,0 +1,36 @@
+.title_contain-box {
+    flex-grow: 1;
+}
+
+.title_icon_contain-box {
+    width: 100%;
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0);
+    align-items: center;
+    justify-content: center;
+}
+
+.title_text-label {
+    height: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_icon-box {
+    flex-grow: 0;
+    width: 80%;
+    height: 90%;
+}
+
+.touch-label {
+    -unity-font-definition: url("project://database/Assets/UAPT/97.UI_Module/Jalnan2TTF%20SDF.asset?fileID=11400000&guid=957e7964f45465743a24a61bbc80dc62&type=2#Jalnan2TTF SDF");
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-color: rgb(0, 0, 0);
+    -unity-text-outline-width: 4px;
+    transition-duration: 1.5s;
+}
+
+.touch-label.on {
+    opacity: 0;
+}
