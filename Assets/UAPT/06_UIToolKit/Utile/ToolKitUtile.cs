@@ -177,7 +177,7 @@ namespace UAPT.Utile
             if (_scroller == null)
                 return;
 
-            if (_scrollDir == ScrollDirection.Vertical)
+            if (_scrollDir == ScrollDirection.Horizontal)
             {
                 _scroller.RegisterCallback<WheelEvent>((evt) =>
                 {
@@ -186,7 +186,7 @@ namespace UAPT.Utile
                 });
                 return;
             }
-            else if (_scrollDir == ScrollDirection.Horizontal)
+            else if (_scrollDir == ScrollDirection.Vertical)
             {
                 _scroller.RegisterCallback<WheelEvent>((evt) =>
                 {
