@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public enum PlayerStateEnum
     Move
 }
 
-public class PlayerStateMachine
+public class PlayerStateMachine : MonoBehaviour
 {
     public PlayerState CurrentState { get; private set; }
     public Dictionary<PlayerStateEnum, PlayerState> stateDictionary;
