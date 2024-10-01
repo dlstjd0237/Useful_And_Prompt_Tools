@@ -1,9 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Util
 {
+    public static T GetOrAddCompoenet<T>(GameObject go) where T : UnityEngine.Component
+    {
+        T compoent = go.GetComponent<T>();
+        if (compoent == null)
+            go.AddComponent<T>();
+
+        return compoent;
+    }
+
     public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
         Transform transform = FindChild<Transform>(go, name, recursive);
@@ -12,7 +19,7 @@ public static class Util
 
         return transform.gameObject;
     }
-    public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : Object
+    public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
         if (go == null)
             return null;
