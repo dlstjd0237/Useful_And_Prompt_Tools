@@ -6,7 +6,7 @@ public static class Util
     {
         T compoent = go.GetComponent<T>();
         if (compoent == null)
-            go.AddComponent<T>();
+            compoent = go.AddComponent<T>();
 
         return compoent;
     }
