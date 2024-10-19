@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class Util
@@ -49,4 +50,15 @@ public static class Util
         }
         return null;
     }
+    public static bool NullCheck<T>(T Value)
+    {
+        if (Value == null)
+        {
+            Type type = typeof(T);
+            Debug.LogError($"{type.ToString()} Is Null");
+            return false;
+        }
+        return true;
+    }
+
 }
