@@ -69,6 +69,8 @@ public class SceneControlManager : MonoSingleton<SceneControlManager>
         DontDestroyOnLoad(gameObject);
     }
 
+    public static void LoadScene(string sceneName) => FadeOut(() => SceneManager.LoadScene(sceneName));
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         _fadeIn(() => { });

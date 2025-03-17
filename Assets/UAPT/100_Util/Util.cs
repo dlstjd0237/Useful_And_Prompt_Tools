@@ -1,64 +1,91 @@
 using System;
 using UnityEngine;
 
-public static class Util
+
+namespace BIS.Utility
 {
-    public static T GetOrAddCompoenet<T>(GameObject go) where T : UnityEngine.Component
+    public static class Util
     {
-        T compoent = go.GetComponent<T>();
-        if (compoent == null)
-            compoent = go.AddComponent<T>();
-
-        return compoent;
-    }
-
-    public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
-    {
-        Transform transform = FindChild<Transform>(go, name, recursive);
-        if (transform == null)
-            return null;
-
-        return transform.gameObject;
-    }
-    public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
-    {
-        if (go == null)
-            return null;
-
-        if (recursive)
+        public static T GetOrAddComponent<T>(GameObject go) where T : UnityEngine.Component
         {
-            for (int i = 0; i < go.transform.childCount; ++i)
+            T compoent = go.GetComponent<T>();
+            if (compoent == null)
+                compoent = go.AddComponent<T>();
+
+            return compoent;
+        }
+
+        /// <summary>
+        /// All Finding
+        /// </summary>
+        /// <param name="go">Target GameObject</param>
+        /// <param name="name">GameObject Name</param>
+        /// <param name="recursive">Find in Every Child</param>
+        /// <returns></returns>
+        public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
+        {
+            Transform transform = FindChild<Transform>(go, name, recursive);
+            if (transform == null)
+                return null;
+
+            return transform.gameObject;
+        }
+        public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
+        {
+            if (go == null)
+                return null;
+
+            if (recursive==false)
             {
-                Transform transform = go.transform.GetChild(i);
-                if (string.IsNullOrEmpty(name) || transform.name == name)
+                for (int i = 0; i < go.transform.childCount; ++i)
                 {
-                    T component = transform.GetComponent<T>();
-                    if (component != null)
+                    Transform transform = go.transform.GetChild(i);
+                    if (string.IsNullOrEmpty(name) || transform.name == name)
+                    {
+                        T component = transform.GetComponent<T>();
+                        if (component != null)
+                            return component;
+                    }
+                }
+            }
+            else
+            {
+                foreach (T component in go.GetComponentsInChildren<T>())
+                {
+                    if (string.IsNullOrEmpty(name) || component.name == name)
+                    {
                         return component;
+                    }
                 }
             }
+            return null;
         }
-        else
+        public static bool ValueNullCheck<T>(this T Value) where T : class
         {
-            foreach (T component in go.GetComponentsInChildren<T>())
+            if (Value == null)
             {
-                if (string.IsNullOrEmpty(name) || component.name == name)
-                {
-                    return component;
-                }
+                Type type = typeof(T);
+                Debug.LogError($"{type.ToString()} Is Null");
+                return false;
             }
+            return true;
         }
-        return null;
-    }
-    public static bool NullCheck<T>(T Value)
-    {
-        if (Value == null)
-        {
-            Type type = typeof(T);
-            Debug.LogError($"{type.ToString()} Is Null");
-            return false;
-        }
-        return true;
-    }
 
+        public static bool IntToBool(int value) => value == 0 ? false : true;
+
+        public static int BoolToInt(bool value) => value ? 1 : 0;
+
+        public static RaycastHit GetMouseToRay(Camera cam)
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                return hit;
+            }
+            return hit;
+        }
+    }
 }
+

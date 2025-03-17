@@ -1,41 +1,62 @@
+using BIS.Init;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+namespace BIS.Entities
 {
-    public Animator AnimatorCompo;
-    public Health HealthCompo;
-    public Rigidbody RigodbpdyComp;
-
-    [Header("Collision info")]
-    protected Transform _groundChecker;
-    protected Transform _wallChecker;
-    protected float _groundCheckDistance;
-    protected float _wallCheckDistance;
-    protected LayerMask _whatIsEnemy;
-    protected LayerMask _whatIsGround;
-    protected LayerMask _whatIsWall;
-
-
-    protected virtual void Awake()
+    public abstract class Entity : InitBase
     {
-        Transform visualTrm = transform.Find("Visual");
-        AnimatorCompo = visualTrm.GetComponent<Animator>();
-        HealthCompo = gameObject.GetComponent<Health>();
-        RigodbpdyComp = gameObject.GetComponent<Rigidbody>();
-    }
-    public virtual bool IsGroundDetected()
-    {
-        return Physics.Raycast(_groundChecker.position, Vector2.down, _groundCheckDistance, _whatIsGround);
-    }
+        protected Dictionary<Type, IEntityComponentInit> _components;
 
-    public virtual bool IsRightWallDetected()
-    {
-        return Physics.Raycast(_wallChecker.position, _wallChecker.right, _wallCheckDistance, _whatIsWall);
-    }
 
-    public virtual bool IsLeftWallDetected()
-    {
-        return Physics.Raycast(_wallChecker.position, -_wallChecker.right, _wallCheckDistance, _whatIsWall);
-    }
+        public override bool Init()
+        {
+            if (base.Init() == false)
+                return false;
 
+            _components = new Dictionary<Type, IEntityComponentInit>();
+            AddComponentToDictionary();
+            ComponentInitialize();
+            AfterInitalize();
+
+            return true;
+        }
+
+
+        private void AddComponentToDictionary()
+        {
+            GetComponentsInChildren<IEntityComponentInit>(true).ToList().ForEach(component => _components.Add(component.GetType(), component));
+        }
+        private void ComponentInitialize()
+        {
+            foreach (var item in _components)
+            {
+                item.Value.Initalize(this);
+            }
+        }
+
+        private void AfterInitalize()
+        {
+            _components.Values.OfType<IAfterInit>()
+             .ToList().ForEach(afterInitCompo => afterInitCompo.AfterInit());
+        }
+        public T GetCompo<T>(bool isDerived = false) where T : IEntityComponentInit
+        {
+            if (_components.TryGetValue(typeof(T), out IEntityComponentInit component))
+            {
+                return (T)component;
+            }
+
+            if (isDerived == false) return default;
+
+            Type findType = _components.Keys.FirstOrDefault(type => type.IsSubclassOf(typeof(T)));
+            if (findType != null)
+                return (T)_components[findType];
+
+            return default;
+        }
+    }
 }
